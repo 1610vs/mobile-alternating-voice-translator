@@ -365,9 +365,6 @@ export default function App() {
 
       {/* Dialog history */}
       <div className="flex-1 overflow-y-auto px-4 pb-2 max-w-lg mx-auto w-full" style={{ overscrollBehavior: 'contain' }}>
-        {dialog.length === 0 && !isBusy && (
-          <WelcomeScreen asrSupported={asrSupported} ttsSupported={ttsSupported} />
-        )}
         {dialog.map(entry => (
           <DialogBubble
             key={entry.id}
@@ -543,51 +540,5 @@ function SoundWave() {
         />
       ))}
     </div>
-  );
-}
-
-function WelcomeScreen({ asrSupported, ttsSupported }: { asrSupported: boolean; ttsSupported: boolean }) {
-  return (
-    <div className="py-8 px-4 text-center space-y-5">
-      <div className="text-6xl mb-2">🌍</div>
-      <h2 className="text-lg font-bold text-slate-300">Как пользоваться</h2>
-      <div className="grid grid-cols-1 gap-3 text-left max-w-xs mx-auto">
-        {[
-          { icon: '1️⃣', text: 'Выберите языки A и B вверху' },
-          { icon: '2️⃣', text: 'Нажмите кнопку A — первый человек говорит' },
-          { icon: '3️⃣', text: 'Перевод автоматически зачитывается вслух' },
-          { icon: '4️⃣', text: 'Нажмите кнопку B — второй человек отвечает' },
-          { icon: '🔄', text: 'Кнопка в центре меняет языки местами' },
-          { icon: '🔊', text: 'Нажмите 🔊 в истории для повтора перевода' },
-        ].map((step, i) => (
-          <div key={i} className="flex items-start gap-3 bg-slate-800/40 rounded-xl px-3 py-2.5">
-            <span className="text-lg flex-shrink-0">{step.icon}</span>
-            <span className="text-sm text-slate-400 leading-snug">{step.text}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="flex gap-2 justify-center flex-wrap mt-4">
-        <StatusBadge ok={asrSupported} label="🎤 Распознавание речи" />
-        <StatusBadge ok={ttsSupported} label="🔊 Синтез речи" />
-        <StatusBadge ok={location.protocol === 'https:' || location.hostname === 'localhost'} label="🔒 HTTPS" />
-      </div>
-
-      <p className="text-xs text-slate-600 mt-2">
-        Работает в Chrome и Safari · Нужен HTTPS
-      </p>
-    </div>
-  );
-}
-
-function StatusBadge({ ok, label }: { ok: boolean; label: string }) {
-  return (
-    <span className={`text-xs px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5 ${
-      ok
-        ? 'bg-emerald-900/40 text-emerald-400 border border-emerald-700/40'
-        : 'bg-red-900/40 text-red-400 border border-red-700/40'
-    }`}>
-      {ok ? '✓' : '✗'} {label}
-    </span>
   );
 }
