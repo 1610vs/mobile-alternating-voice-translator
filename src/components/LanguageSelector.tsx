@@ -8,7 +8,7 @@ export const LANGUAGES: Language[] = [
   { code: 'en-US', name: 'English (US)', flag: '🇺🇸' },
   { code: 'en-GB', name: 'English (UK)', flag: '🇬🇧' },
   { code: 'ru-RU', name: 'Русский', flag: '🇺🇦' },
-  { code: 'uk-UA', name: 'Українська', flag: '🇺🇦' },
+  { code: 'uk-UA', name: 'Українська', flag: '🏳️' },
   { code: 'ro-RO', name: 'Română', flag: '🇷🇴' },
   { code: 'el-GR', name: 'Ελληνικά', flag: '🇬🇷' },
   { code: 'hu-HU', name: 'Magyar', flag: '🇭🇺' },
